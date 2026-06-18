@@ -105,8 +105,8 @@ DEFAULT_CONFIG = _apply_env_overrides({
         "core_stock_apis": "yfinance",       # Options: alpha_vantage, yfinance
         "technical_indicators": "yfinance",  # Options: alpha_vantage, yfinance
         "fundamental_data": "yfinance",      # Options: alpha_vantage, yfinance
-        "news_data": "yfinance",             # Options: alpha_vantage, yfinance
-        "macro_data": "fred",                # Options: fred (needs FRED_API_KEY)
+        "news_data": "yfinance",             # Options: alpha_vantage, yfinance, naver (needs NAVER_CLIENT_ID/SECRET)
+        "macro_data": "fred",                # Options: fred (needs FRED_API_KEY), bok (needs BOK_API_KEY)
         "prediction_markets": "polymarket",  # Options: polymarket (keyless)
     },
     # Tool-level configuration (takes precedence over category-level)
@@ -130,6 +130,8 @@ DEFAULT_CONFIG = _apply_env_overrides({
         ".AX":  "^AXJO",       # Australia (ASX 200)
         ".SS":  "000001.SS",   # Shanghai (SSE Composite)
         ".SZ":  "399001.SZ",   # Shenzhen (SZSE Component)
+        ".KS":  "^KS11",       # Korea KOSPI
+        ".KQ":  "^KQ11",       # Korea KOSDAQ
         "":     "SPY",         # default for US-listed tickers (no suffix)
     },
 })

@@ -17,7 +17,9 @@ from .errors import (
     VendorNotConfiguredError,
     VendorRateLimitError,
 )
+from .bok_macro import get_macro_data as get_bok_macro_data
 from .fred import get_macro_data as get_fred_macro_data
+from .naver_news import get_global_news_naver, get_news_naver
 from .polymarket import get_prediction_markets as get_polymarket_prediction_markets
 from .y_finance import (
     get_balance_sheet as get_yfinance_balance_sheet,
@@ -82,6 +84,8 @@ VENDOR_LIST = [
     "fred",
     "polymarket",
     "alpha_vantage",
+    "naver",   # 국내 뉴스: NAVER_CLIENT_ID + NAVER_CLIENT_SECRET 필요
+    "bok",     # 국내 거시경제: BOK_API_KEY 필요
 ]
 
 # Mapping of methods to their vendor-specific implementations
@@ -117,10 +121,12 @@ VENDOR_METHODS = {
     "get_news": {
         "alpha_vantage": get_alpha_vantage_news,
         "yfinance": get_news_yfinance,
+        "naver": get_news_naver,
     },
     "get_global_news": {
         "yfinance": get_global_news_yfinance,
         "alpha_vantage": get_alpha_vantage_global_news,
+        "naver": get_global_news_naver,
     },
     "get_insider_transactions": {
         "alpha_vantage": get_alpha_vantage_insider_transactions,
@@ -129,6 +135,7 @@ VENDOR_METHODS = {
     # macro_data
     "get_macro_indicators": {
         "fred": get_fred_macro_data,
+        "bok": get_bok_macro_data,
     },
     # prediction_markets
     "get_prediction_markets": {
